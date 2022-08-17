@@ -33,7 +33,7 @@ Checkout the livekit-react repo into the correct tag:
 
 ```sh
 [work-dir]$ cd livekit-react
-[work-dir/livekit-react]$ git co @livekit/react-components@1.0.1
+[work-dir/livekit-react]$ git checkout @livekit/react-components@1.0.1
 ```
 
 Now make sure that you have the correct package management tools:
@@ -88,7 +88,6 @@ Once you've made the changes you want to the dependencies, create the patch file
 
 ```sh
 [work-dir/webrtc-client]$ yarn run patch-package @livekit/react-components
-[work-dir/webrtc-client]$ git add packages
+[work-dir/webrtc-client]$ git add patches
 [work-dir/webrtc-client]$ git commit -m "Change something in livekit react-components"
 ```
-
