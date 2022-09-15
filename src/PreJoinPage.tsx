@@ -21,6 +21,7 @@ export const PreJoinPage = () => {
   const [adaptiveStream, setAdaptiveStream] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(true);
+  const [password, setPassword] = useState<string>("");
   // disable connect button unless validated
   const [connectDisabled, setConnectDisabled] = useState(true);
   const [videoTrack, setVideoTrack] = useState<LocalVideoTrack>();
@@ -114,6 +115,7 @@ export const PreJoinPage = () => {
     const params: { [key: string]: string } = {
       url,
       room,
+      password,
       token: data.token,
       videoEnabled: videoEnabled ? "1" : "0",
       audioEnabled: audioEnabled ? "1" : "0",
@@ -171,6 +173,17 @@ export const PreJoinPage = () => {
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+          </div>
+          <div>
+            <div className="label">E2EE Password</div>
+            <div>
+              <input
+                type="text"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>

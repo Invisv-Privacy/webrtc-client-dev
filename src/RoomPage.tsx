@@ -26,6 +26,8 @@ export const RoomPage = () => {
   const token = query.get("token");
   const recorder = query.get("recorder");
   const room = query.get("room");
+  const passwordQuery = query.get("password");
+  const [password, setPassword] = useState<string>(passwordQuery || "");
 
   if (!url || !token) {
     return <div>url and token are required</div>;
@@ -107,6 +109,17 @@ export const RoomPage = () => {
                 ?room={room}
               </p>
             </div>
+            <div>
+              <div className="label">e2ee password</div>
+              <div>
+                <input
+                  type="text"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
           </div>
         </div>
         <LiveKitRoom
@@ -129,6 +142,8 @@ export const RoomPage = () => {
             videoCaptureDefaults: {
               resolution: VideoPresets.h720.resolution,
             },
+            // @ts-ignore
+            e2ePassword: password,
           }}
           onLeave={onLeave}
         />
