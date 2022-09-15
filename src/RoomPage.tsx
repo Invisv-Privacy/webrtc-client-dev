@@ -41,6 +41,14 @@ export const RoomPage = () => {
     setNumParticipants(room.participants.size + 1);
   };
 
+  const updatePassword = (password: string) => {
+    setPassword(password);
+    if (typeof (window as any).currentRoom !== "undefined") {
+      console.log((window as any).currentRoom);
+      (window as any).currentRoom.updatePassword(password);
+    }
+  };
+
   const onParticipantDisconnected = (room: Room) => {
     updateParticipantSize(room);
 
@@ -116,7 +124,7 @@ export const RoomPage = () => {
                   type="text"
                   name="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => updatePassword(e.target.value)}
                 />
               </div>
             </div>
@@ -135,6 +143,7 @@ export const RoomPage = () => {
               onParticipantDisconnected(room)
             );
             updateParticipantSize(room);
+            room.updatePassword(password);
           }}
           roomOptions={{
             adaptiveStream: isSet(query, "adaptiveStream"),
