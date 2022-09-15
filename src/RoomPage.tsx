@@ -103,6 +103,7 @@ export const RoomPage = () => {
                 {"//"}
                 {window.location.hostname}
                 {window.location.port !== "" ? `:${window.location.port}` : ""}
+                {window.location.pathname}
                 ?room={room}
               </p>
             </div>
