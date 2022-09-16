@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-router-dom/index.js b/node_modules/react-router-dom/index.js
+index 5c57893..f012f07 100644
+--- a/node_modules/react-router-dom/index.js
++++ b/node_modules/react-router-dom/index.js
+@@ -46,6 +46,8 @@ function _objectWithoutPropertiesLoose(source, excluded) {
+   return target;
+ }
+ 
++console.log('here');
++
+ const _excluded = ["onClick", "reloadDocument", "replace", "state", "target", "to"],
+       _excluded2 = ["aria-current", "caseSensitive", "className", "end", "style", "to", "children"];
+ 
