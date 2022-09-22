@@ -9,12 +9,12 @@ import { VideoRenderer } from "@livekit/react-core";
 import { ReactElement, useEffect, useState } from "react";
 import { AspectRatio } from "react-aspect-ratio";
 import { useNavigate } from "react-router-dom";
-import cryptoRandomString from 'crypto-random-string';
+import cryptoRandomString from "crypto-random-string";
 import axios from "axios";
 
 export const PreJoinPage = () => {
   // state to pass onto room
-  const [url, setUrl] = useState("wss://webrtc.invisv.com");
+  const [url, setUrl] = useState(process.env.REACT_APP_WEBRTC_ENDPOINT!);
   const [name, setName] = useState<string>("");
   const [simulcast, setSimulcast] = useState(true);
   const [dynacast, setDynacast] = useState(true);
