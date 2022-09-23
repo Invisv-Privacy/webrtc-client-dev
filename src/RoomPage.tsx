@@ -29,6 +29,8 @@ export const RoomPage = () => {
   const passwordQuery = query.get("password");
   const [password, setPassword] = useState<string>(passwordQuery || "");
 
+  setLogLevel("debug");
+
   if (!url || !token) {
     return <div>url and token are required</div>;
   }
@@ -134,7 +136,6 @@ export const RoomPage = () => {
           url={url}
           token={token}
           onConnected={(room) => {
-            setLogLevel("debug");
             onConnected(room, query);
             room.on(RoomEvent.ParticipantConnected, () =>
               updateParticipantSize(room)
