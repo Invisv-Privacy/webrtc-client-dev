@@ -6802,10 +6802,9 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-livekit-client@1.2.11:
+livekit-client@Invisv-Privacy/client-sdk-js.git#maxb/e2ee-poc:
   version "1.2.11"
-  resolved "https://registry.yarnpkg.com/livekit-client/-/livekit-client-1.2.11.tgz#62cff5c93b05f50a514d4ad29b817803ff558f54"
-  integrity sha512-14Nwe0TzRV+JjpKqO4scA3jcAwYT5Cu7rSA3Mg/fwGTxIBi67V6OZcy4DfFeRh/sirobqeUksiaw3TlbiPPAQQ==
+  resolved "https://codeload.github.com/Invisv-Privacy/client-sdk-js/tar.gz/b90c186ee8c28c011ca35872aff0c497315d7226"
   dependencies:
     async-await-queue "^1.2.1"
     events "^3.3.0"
