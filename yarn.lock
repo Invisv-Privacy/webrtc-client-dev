@@ -6802,9 +6802,9 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-"livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git#maxb/e2ee-poc":
-  version "1.2.11"
-  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#1e11100271c55e6090044df9ceaa40dd08f66ad7"
+"livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git":
+  version "1.4.1"
+  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#de7fe20af2beea25d2eab1dbfff48d0d29f3c4ee"
   dependencies:
     async-await-queue "^1.2.1"
     events "^3.3.0"
@@ -6813,6 +6813,7 @@ lines-and-columns@^1.1.6:
     sdp-transform "^2.14.1"
     ts-debounce "^4.0.0"
     typed-emitter "^2.1.0"
+    ua-parser-js "^1.0.2"
     webrtc-adapter "^8.1.1"
 
 load-json-file@^4.0.0:
@@ -10473,6 +10474,11 @@ typescript@^4.2.3:
   version "4.7.4"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.7.4.tgz"
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
+
+ua-parser-js@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-1.0.2.tgz#e2976c34dbfb30b15d2c300b2a53eac87c57a775"
+  integrity sha512-00y/AXhx0/SsnI51fTc0rLRmafiGOM4/O+ny10Ps7f+j/b8p/ZY11ytMgznXkOVo4GQ+KwQG5UQLkLGirsACRg==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
