@@ -4,13 +4,14 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Room, RoomEvent, setLogLevel, VideoPresets } from "livekit-client";
+import { Room, RoomEvent, setLogLevel, VideoPresets, DisconnectReason } from "livekit-client";
 import {
   DisplayContext,
   DisplayOptions,
   LiveKitRoom,
 } from "@livekit/react-components";
 import { useState } from "react";
+import { useEffect } from "react";
 import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -20,6 +21,7 @@ export const RoomPage = () => {
     stageLayout: "grid",
     showStats: false,
   });
+  const [timeRemaining, setTimeRemaining] = useState(0);
   const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
   const url = query.get("url");
@@ -30,6 +32,15 @@ export const RoomPage = () => {
   const [password, setPassword] = useState<string>(passwordQuery || "");
 
   setLogLevel("debug");
+
+  useEffect(() => {
+    if (timeRemaining > 0) {
+      const timer = setInterval(() => setTimeRemaining(timeRemaining - 1), 1000);
+      return () => clearInterval(timer);
+    } else {
+      return () => {};
+    }
+  }, [timeRemaining]);
 
   if (!url || !token) {
     return <div>url and token are required</div>;
@@ -64,6 +75,11 @@ export const RoomPage = () => {
     }
   };
 
+  function handleRoomDisconnect(room: Room, reason?: DisconnectReason) {
+    if (!room) return;
+    console.log("DISCONNECTED FROM ROOM", reason);
+  }
+
   const updateOptions = (options: DisplayOptions) => {
     setDisplayOptions({
       ...displayOptions,
@@ -77,6 +93,11 @@ export const RoomPage = () => {
         <div className="topBar">
           <h2>LiveKit Video</h2>
           <div className="right">
+            {timeRemaining > 0 &&
+            <div className="countdownTimer">
+              Time Remaining: {Math.floor(timeRemaining/60)}:{(timeRemaining%60).toString().padStart(2, "0")}
+            </div>
+            }
             <div>
               <input
                 id="showStats"
@@ -137,11 +158,15 @@ export const RoomPage = () => {
           token={token}
           onConnected={(room) => {
             onConnected(room, query);
+            setTimeRemaining(room.roomTimeRemaining);
             room.on(RoomEvent.ParticipantConnected, () =>
               updateParticipantSize(room)
             );
             room.on(RoomEvent.ParticipantDisconnected, () =>
               onParticipantDisconnected(room)
+            );
+            room.on(RoomEvent.Disconnected, (reason?: DisconnectReason) =>
+              handleRoomDisconnect(room, reason)
             );
             updateParticipantSize(room);
             room.updatePassword(password);
