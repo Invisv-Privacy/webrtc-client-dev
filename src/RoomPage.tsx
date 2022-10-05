@@ -10,8 +10,7 @@ import {
   DisplayOptions,
   LiveKitRoom,
 } from "@livekit/react-components";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -29,10 +28,10 @@ export const RoomPage = () => {
   const recorder = query.get("recorder");
   const room = query.get("room");
   const passwordQuery = query.get("password");
-  const [password, setPassword] = useState<string>(passwordQuery || "");
+  const password = passwordQuery || "";
 
   setLogLevel("debug");
-
+  
   useEffect(() => {
     if (timeRemaining > 0) {
       const timer = setInterval(() => setTimeRemaining(timeRemaining - 1), 1000);
@@ -52,14 +51,6 @@ export const RoomPage = () => {
 
   const updateParticipantSize = (room: Room) => {
     setNumParticipants(room.participants.size + 1);
-  };
-
-  const updatePassword = (password: string) => {
-    setPassword(password);
-    if (typeof (window as any).currentRoom !== "undefined") {
-      console.log((window as any).currentRoom);
-      (window as any).currentRoom.updatePassword(password);
-    }
   };
 
   const onParticipantDisconnected = (room: Room) => {
@@ -137,19 +128,10 @@ export const RoomPage = () => {
                 {window.location.hostname}
                 {window.location.port !== "" ? `:${window.location.port}` : ""}
                 {window.location.pathname}
+                {"#/"}
                 ?room={room}
+                &password={password}
               </p>
-            </div>
-            <div>
-              <div className="label">e2ee password</div>
-              <div>
-                <input
-                  type="text"
-                  name="password"
-                  value={password}
-                  onChange={(e) => updatePassword(e.target.value)}
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -169,7 +151,6 @@ export const RoomPage = () => {
               handleRoomDisconnect(room, reason)
             );
             updateParticipantSize(room);
-            room.updatePassword(password);
           }}
           roomOptions={{
             adaptiveStream: isSet(query, "adaptiveStream"),

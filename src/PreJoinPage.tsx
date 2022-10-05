@@ -8,7 +8,7 @@ import {
 import { VideoRenderer } from "@livekit/react-core";
 import { ReactElement, useEffect, useState } from "react";
 import { AspectRatio } from "react-aspect-ratio";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import cryptoRandomString from "crypto-random-string";
 import axios from "axios";
 
@@ -21,20 +21,21 @@ export const PreJoinPage = () => {
   const [adaptiveStream, setAdaptiveStream] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(true);
-  const [password, setPassword] = useState<string>("");
   // disable connect button unless validated
   const [connectDisabled, setConnectDisabled] = useState(true);
   const [videoTrack, setVideoTrack] = useState<LocalVideoTrack>();
   const [audioDevice, setAudioDevice] = useState<MediaDeviceInfo>();
   const [videoDevice, setVideoDevice] = useState<MediaDeviceInfo>();
   const navigate = useNavigate();
-  const search = window.location.search;
-  const query = new URLSearchParams(search);
+  const query = new URLSearchParams(useLocation().search);
 
   const roomQuery = query.get("room");
   const room: string =
     roomQuery !== undefined && roomQuery !== null ? roomQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
-  console.log(room);
+
+  const passwordQuery = query.get("password");
+  const password: string =
+    passwordQuery !== undefined && passwordQuery !== null ? passwordQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
 
   useEffect(() => {
     if (name && url) {
@@ -173,17 +174,6 @@ export const PreJoinPage = () => {
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-          </div>
-          <div>
-            <div className="label">E2EE Password</div>
-            <div>
-              <input
-                type="text"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
