@@ -151,59 +151,58 @@ export const PreJoinPage = () => {
 
   return (
     <div className="prejoin">
-      <main>
-        <h2>LiveKit Video</h2>
-        <hr />
-        <div className="entrySection">
-          <div>
-            <div className="label">Name</div>
+      <header>
+      <a href="https://invisv.com/booth" className="boothlogo">Booth</a>
+        <nav>
+          <ul>
+            <li><a href="https://invisv.com/" className="navlogo">INVISV</a></li>
+          </ul>
+        </nav>
+      </header>
+      <main className="hero">
+        <div className="content">
+          <div className="entrySection">
             <div>
-              <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+              <div className="label">Name</div>
+              <div>
+                <input
+                  type="text"
+                  name="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="videoSection">
+            <AspectRatio ratio={16 / 9}>{videoElement}</AspectRatio>
+          </div>
+
+          <div className="controlSection">
+            <div>
+              <AudioSelectButton
+                isMuted={!audioEnabled}
+                onClick={toggleAudio}
+                onSourceSelected={setAudioDevice}
+              />
+              <VideoSelectButton
+                isEnabled={videoTrack !== undefined}
+                onClick={toggleVideo}
+                onSourceSelected={selectVideoDevice}
+              />
+            </div>
+            <div className="right">
+              <ControlButton
+                label="Connect"
+                disabled={connectDisabled}
+                icon={faBolt}
+                onClick={connectToRoom}
               />
             </div>
           </div>
         </div>
-
-        <div className="videoSection">
-          <AspectRatio ratio={16 / 9}>{videoElement}</AspectRatio>
-        </div>
-
-        <div className="controlSection">
-          <div>
-            <AudioSelectButton
-              isMuted={!audioEnabled}
-              onClick={toggleAudio}
-              onSourceSelected={setAudioDevice}
-            />
-            <VideoSelectButton
-              isEnabled={videoTrack !== undefined}
-              onClick={toggleVideo}
-              onSourceSelected={selectVideoDevice}
-            />
-          </div>
-          <div className="right">
-            <ControlButton
-              label="Connect"
-              disabled={connectDisabled}
-              icon={faBolt}
-              onClick={connectToRoom}
-            />
-          </div>
-        </div>
       </main>
-      <footer>
-        This page is built with{" "}
-        <a href="https://github.com/livekit/livekit-react">LiveKit React</a>
-        &nbsp; (
-        <a href="https://github.com/livekit/livekit-react/blob/master/example/src/PreJoinPage.tsx">
-          source
-        </a>
-        )
-      </footer>
     </div>
   );
 };

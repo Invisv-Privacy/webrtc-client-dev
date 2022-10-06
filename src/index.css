@@ -7,7 +7,6 @@ body {
   background: black;
   color: white;
   margin: 0;
-  /* overflow: hidden; */
   height: 100vh;
   font-size: 12px;
 }
@@ -27,17 +26,15 @@ a:hover {
 .container {
   box-sizing: border-box;
   height: 100vh;
-  padding: 32px;
+  /* padding: 32px; */
 }
 
 .prejoin {
-  display: grid;
-  align-items: center;
-  justify-items: center;
+  height: 100vh;
 }
 
 .prejoin main {
-  width: 750px;
+  width: 100%;
 }
 
 .prejoin h2 {
@@ -139,6 +136,7 @@ a:hover {
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
+  padding: 0px 12px;
 }
 
 .topBar .right {
@@ -175,4 +173,168 @@ a:hover {
   text-align: center;
   margin-left: 0.2rem;
   font-size: 0.9rem;
+}
+
+header {
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 130px;
+	z-index: 2;
+}
+
+.prejoin .boothlogo {
+	color: rgba(55, 255, 255, 0);
+	position: absolute;
+	top: 60px;
+	left: 8%;
+	width: 200px;
+	height: 58px;
+	background-image: url("./img/boothfulllogo_reverse.png");
+}
+
+@media only screen and (max-width: 640px) {
+	.prejoin .boothlogo {
+		top: 30px;
+		background-size: 100px 29px;
+		width: 100px;
+		height: 29px;
+	}
+}
+
+.roomContainer a.boothlogo {
+	display: block;
+}
+
+.roomContainer .boothlogo {
+	color: rgba(55, 255, 255, 0);
+	width: 200px;
+	height: 58px;
+	background-image: url("./img/boothfulllogo_reverse.png");
+}
+
+.navlogo {
+	color: rgba(255, 255, 255, 0);
+	position: absolute;
+	right: 8%;
+	top: 10px;
+	width: 140px;
+	height: 28px;
+	background-image: url("./img/logo-white.svg");
+}
+
+@media only screen and (max-width: 640px) {
+	.navlogo {
+		width: 110px;
+		height: 22px;
+	}
+}
+
+/* Main Nav */
+nav {
+	position: absolute;
+	top: 65px;
+	right: 8%;
+}
+
+nav ul {
+	display: flex;
+	gap: 48px;
+	list-style: none;
+	margin: 0;
+	text-transform: uppercase;
+	font-family: "PlexMono";
+	font-size: 18px;
+}
+
+nav ul li {
+	position: relative;
+	margin: 0;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+nav li.is-selected::after {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: white;
+}
+
+nav.is-dark a {
+	color: black;
+}
+
+nav.is-dark li.is-selected::after {
+	background-color: black;
+}
+
+@media only screen and (max-width: 640px) {
+	nav {
+		top: 28px;
+	}
+
+	nav ul {
+		font-size: 15px;
+		gap: 21px;
+	}
+
+	nav.sm-light a {
+		color: white;
+	}
+
+	nav.sm-light li.is-selected::after {
+		background-color: white;
+	}
+}
+
+/* Hero */
+.hero {
+  margin: auto;
+	position: relative;
+	color: white;
+	text-align: center;
+}
+
+.hero .content {
+  margin: auto;
+	width: 66%;
+}
+
+.hero.is-short {
+	min-height: auto;
+	height: auto;
+	text-align: left;
+}
+
+.hero.is-short .content {
+	padding: 150px 50px 50px 50px;
+	margin: 0 auto;
+	width: 800px;
+}
+
+@media only screen and (max-width: 640px) {
+	.hero {
+		height: auto;
+		min-height: none;
+	}
+
+	.hero .content {
+		max-width: 800px;
+		padding: 32vw 8vw 8vw 8vw;
+	}
+
+	.hero.is-short .content {
+		padding: 28vw 8vw 8vw 8vw;
+		margin: 0 auto;
+		max-width: 800px;
+	}
 }

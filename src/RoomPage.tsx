@@ -30,6 +30,16 @@ export const RoomPage = () => {
   const passwordQuery = query.get("password");
   const password = passwordQuery || "";
 
+  const joinLink = window.location.protocol + 
+    "//" + 
+    window.location.hostname + 
+    (window.location.port !== "" ? (":" + window.location.port) : "") + 
+    window.location.pathname + 
+    "/#/" + 
+    "?server=" + url + 
+    "&room=" + room + 
+    "&password=" + password;
+
   setLogLevel("debug");
   
   useEffect(() => {
@@ -82,7 +92,9 @@ export const RoomPage = () => {
     <DisplayContext.Provider value={displayOptions}>
       <div className="roomContainer">
         <div className="topBar">
-          <h2>LiveKit Video</h2>
+          <div>
+            <a href="https://invisv.com/booth" className="boothlogo">Booth</a>
+          </div>
           <div className="right">
             {timeRemaining > 0 &&
             <div className="countdownTimer">
@@ -123,16 +135,9 @@ export const RoomPage = () => {
             </div>
             <div>
               <p>
-                Join link: {window.location.protocol}
-                {"//"}
-                {window.location.hostname}
-                {window.location.port !== "" ? `:${window.location.port}` : ""}
-                {window.location.pathname}
-                {"#/"}
-                ?server={url}
-                &room={room}
-                &password={password}
+                Join link: {joinLink}
               </p>
+              <button onClick={() => {navigator.clipboard.writeText(joinLink)}}> Copy to Clipboard </button>
             </div>
           </div>
         </div>
