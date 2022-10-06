@@ -129,7 +129,8 @@ export const RoomPage = () => {
                 {window.location.port !== "" ? `:${window.location.port}` : ""}
                 {window.location.pathname}
                 {"#/"}
-                ?room={room}
+                ?server={url}
+                &room={room}
                 &password={password}
               </p>
             </div>
@@ -153,8 +154,11 @@ export const RoomPage = () => {
             updateParticipantSize(room);
           }}
           roomOptions={{
-            adaptiveStream: isSet(query, "adaptiveStream"),
-            dynacast: isSet(query, "dynacast"),
+            adaptiveStream: true,
+            dynacast: true,
+            publishDefaults: {
+              simulcast: true,
+            },
             videoCaptureDefaults: {
               resolution: VideoPresets.h720.resolution,
             },

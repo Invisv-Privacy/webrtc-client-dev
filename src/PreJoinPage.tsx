@@ -14,11 +14,7 @@ import axios from "axios";
 
 export const PreJoinPage = () => {
   // state to pass onto room
-  const [url, setUrl] = useState(process.env.REACT_APP_WEBRTC_ENDPOINT!);
   const [name, setName] = useState<string>("");
-  const [simulcast, setSimulcast] = useState(true);
-  const [dynacast, setDynacast] = useState(true);
-  const [adaptiveStream, setAdaptiveStream] = useState(true);
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(true);
   // disable connect button unless validated
@@ -37,13 +33,20 @@ export const PreJoinPage = () => {
   const password: string =
     passwordQuery !== undefined && passwordQuery !== null ? passwordQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
 
+  const serverQuery = query.get("server");
+  var url = serverQuery !== undefined && serverQuery !== null ? serverQuery : process.env.REACT_APP_WEBRTC_ENDPOINT!;
+
+  if (!url.startsWith("wss://")) {
+    url = "wss://" + url;
+  }
+  
   useEffect(() => {
-    if (name && url) {
+    if (name) {
       setConnectDisabled(false);
     } else {
       setConnectDisabled(true);
     }
-  }, [name, url]);
+  }, [name]);
 
   const toggleVideo = async () => {
     if (videoTrack) {
@@ -120,9 +123,6 @@ export const PreJoinPage = () => {
       token: data.token,
       videoEnabled: videoEnabled ? "1" : "0",
       audioEnabled: audioEnabled ? "1" : "0",
-      simulcast: simulcast ? "1" : "0",
-      dynacast: dynacast ? "1" : "0",
-      adaptiveStream: adaptiveStream ? "1" : "0",
     };
     if (audioDevice) {
       params.audioDeviceId = audioDevice.deviceId;
@@ -156,17 +156,6 @@ export const PreJoinPage = () => {
         <hr />
         <div className="entrySection">
           <div>
-            <div className="label">LiveKit URL</div>
-            <div>
-              <input
-                type="text"
-                name="url"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-              />
-            </div>
-          </div>
-          <div>
             <div className="label">Name</div>
             <div>
               <input
@@ -175,38 +164,6 @@ export const PreJoinPage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-            </div>
-          </div>
-          <div className="options">
-            <div>
-              <input
-                id="simulcast-option"
-                type="checkbox"
-                name="simulcast"
-                checked={simulcast}
-                onChange={(e) => setSimulcast(e.target.checked)}
-              />
-              <label htmlFor="simulcast-option">Simulcast</label>
-            </div>
-            <div>
-              <input
-                id="dynacast-option"
-                type="checkbox"
-                name="dynacast"
-                checked={dynacast}
-                onChange={(e) => setDynacast(e.target.checked)}
-              />
-              <label htmlFor="dynacast-option">Dynacast</label>
-            </div>
-            <div>
-              <input
-                id="adaptivestream-option"
-                type="checkbox"
-                name="adaptiveStream"
-                checked={adaptiveStream}
-                onChange={(e) => setAdaptiveStream(e.target.checked)}
-              />
-              <label htmlFor="adaptivestream-option">Adaptive Stream</label>
             </div>
           </div>
         </div>
