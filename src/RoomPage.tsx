@@ -14,6 +14,12 @@ import { useState, useEffect } from "react";
 import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
+const serverList = {
+  sjc: 'wss://sjc.livekit.stations.invisv.com',
+  iad: 'wss://iad.livekit.stations.invisv.com',
+  sjctest: 'wss://sjc-test.livekit.stations.invisv.com',
+}
+
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
   const [displayOptions, setDisplayOptions] = useState<DisplayOptions>({
@@ -23,24 +29,21 @@ export const RoomPage = () => {
   const [timeRemaining, setTimeRemaining] = useState(0);
   const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
-  const url = query.get("url");
-  const token = query.get("token");
+  const token = query.get("t");
   const recorder = query.get("recorder");
-  const room = query.get("room");
-  const passwordQuery = query.get("password");
+  const room = query.get("r");
+  const passwordQuery = query.get("k");
   const password = passwordQuery || "";
 
-  const joinLink = window.location.protocol + 
-    "//" + 
-    window.location.hostname + 
-    (window.location.port !== "" ? (":" + window.location.port) : "") + 
-    window.location.pathname + 
-    "/#/" + 
-    "?server=" + url + 
-    "&room=" + room + 
-    "&password=" + password;
-
-  setLogLevel("debug");
+  const serverQuery = query.get("s") || "";
+  const server =
+    serverQuery in serverList
+      ? serverQuery
+      : process.env.REACT_APP_WEBRTC_SERVER || "";
+  const url: string | undefined =
+    server in serverList
+      ? serverList[server]
+      : process.env.REACT_APP_WEBRTC_ENDPOINT;
   
   useEffect(() => {
     if (timeRemaining > 0) {
@@ -51,12 +54,39 @@ export const RoomPage = () => {
     }
   }, [timeRemaining]);
 
-  if (!url || !token) {
+  if (!url || !token || !room || !server || !password) {
     return <div>url and token are required</div>;
   }
 
+  const params: { [key: string]: string } = {
+    r: room!,
+    s: server!,
+    k: password,
+  };
+
+  const joinLink = window.location.protocol + 
+    "//" + 
+    window.location.hostname + 
+    (window.location.port !== "" ? (":" + window.location.port) : "") + 
+    window.location.pathname + 
+    "#" +
+    "?" + new URLSearchParams(params).toString();
+
+  setLogLevel("debug");
+
+  if (
+    window.location.protocol === "https:" &&
+    url.startsWith("ws://") &&
+    !url.startsWith("ws://localhost")
+  ) {
+    return <div>Unable to connect to insecure websocket from https</div>;
+  }
+
   const onLeave = () => {
-    navigate("/");
+    navigate({
+      pathname: "/",
+      search: "?" + new URLSearchParams(params).toString(),
+    });
   };
 
   const updateParticipantSize = (room: Room) => {

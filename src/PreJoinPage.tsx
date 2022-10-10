@@ -12,7 +12,23 @@ import { useNavigate, useLocation } from "react-router-dom";
 import cryptoRandomString from "crypto-random-string";
 import axios from "axios";
 
-export const PreJoinPage = () => {
+const BrowserNotSupported = () => {
+  return ( 
+    <div className="prejoin">
+    <header>
+    <a href="https://invisv.com/booth" className="boothlogo">Booth</a>
+      <nav>
+        <ul>
+          <li><a href="https://invisv.com/" className="navlogo">INVISV</a></li>
+        </ul>
+      </nav>
+    </header>
+    <p>Browser not supported.</p>
+    </div>
+    );
+};
+
+const PreJoin = () => {
   // state to pass onto room
   const [name, setName] = useState<string>("");
   const [videoEnabled, setVideoEnabled] = useState(false);
@@ -25,20 +41,16 @@ export const PreJoinPage = () => {
   const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
 
-  const roomQuery = query.get("room");
+  const roomQuery = query.get("r");
   const room: string =
     roomQuery !== undefined && roomQuery !== null ? roomQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
 
-  const passwordQuery = query.get("password");
+  const passwordQuery = query.get("k");
   const password: string =
     passwordQuery !== undefined && passwordQuery !== null ? passwordQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
 
-  const serverQuery = query.get("server");
-  var url = serverQuery !== undefined && serverQuery !== null ? serverQuery : process.env.REACT_APP_WEBRTC_ENDPOINT!;
-
-  if (!url.startsWith("wss://")) {
-    url = "wss://" + url;
-  }
+  const serverQuery = query.get("s");
+  const server = serverQuery !== undefined && serverQuery !== null ? serverQuery : process.env.REACT_APP_WEBRTC_SERVER!;
   
   useEffect(() => {
     if (name) {
@@ -98,15 +110,6 @@ export const PreJoinPage = () => {
       videoTrack.stop();
     }
 
-    if (
-      window.location.protocol === "https:" &&
-      url.startsWith("ws://") &&
-      !url.startsWith("ws://localhost")
-    ) {
-      alert("Unable to connect to insecure websocket from https");
-      return;
-    }
-
     // Get access token
     const { data } = await axios.post(
       `${process.env.REACT_APP_SERVER_ENDPOINT!}/join`,
@@ -117,10 +120,10 @@ export const PreJoinPage = () => {
     );
 
     const params: { [key: string]: string } = {
-      url,
-      room,
-      password,
-      token: data.token,
+      r: room,
+      k: password,
+      t: data.token,
+      s: server,
       videoEnabled: videoEnabled ? "1" : "0",
       audioEnabled: audioEnabled ? "1" : "0",
     };
@@ -205,4 +208,13 @@ export const PreJoinPage = () => {
       </main>
     </div>
   );
+};
+
+export const PreJoinPage = () => {
+  const isChrome = navigator.userAgent.includes("Chrome")
+  if (isChrome) {
+    return <PreJoin />;
+  } else {
+    return <BrowserNotSupported />;
+  }
 };
