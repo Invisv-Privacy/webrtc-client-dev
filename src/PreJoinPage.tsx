@@ -11,6 +11,7 @@ import { AspectRatio } from "react-aspect-ratio";
 import { useNavigate, useLocation } from "react-router-dom";
 import cryptoRandomString from "crypto-random-string";
 import axios from "axios";
+import { generateName } from "./names";
 
 const BrowserNotSupported = () => {
   return ( 
@@ -30,7 +31,7 @@ const BrowserNotSupported = () => {
 
 const PreJoin = () => {
   // state to pass onto room
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState<string>(generateName());
   const [videoEnabled, setVideoEnabled] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(true);
   // disable connect button unless validated
