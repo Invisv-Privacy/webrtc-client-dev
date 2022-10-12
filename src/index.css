@@ -105,6 +105,10 @@ button.green:hover {
   padding: 8px;
 }
 
+.entrySection > div:nth-child(1) {
+  width: 33%
+}
+
 .entrySection input[type="text"] {
   width: calc(100% - 16px);
 }
