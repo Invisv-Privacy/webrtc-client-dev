@@ -169,14 +169,13 @@ export const RoomPage = () => {
               <span>{numParticipants}</span>
             </div>
             <div>
-              <p>Join link: {joinLink}</p>
               <button
                 onClick={() => {
                   navigator.clipboard.writeText(joinLink);
                 }}
               >
                 {" "}
-                Copy to Clipboard{" "}
+                Copy Join Link to Clipboard{" "}
               </button>
             </div>
           </div>
