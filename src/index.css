@@ -347,3 +347,8 @@ nav.is-dark li.is-selected::after {
     max-width: 800px;
   }
 }
+
+.browserSupportContainer {
+  text-align: center;
+  margin-top: 40px;
+}

@@ -14,29 +14,7 @@ import axios from "axios";
 import { generateName } from "./names";
 import { getServerFromQuery } from "./serverList";
 
-const BrowserNotSupported = () => {
-  return (
-    <div className="prejoin">
-      <header>
-        <a href="https://invisv.com/booth" className="boothlogo">
-          Booth
-        </a>
-        <nav>
-          <ul>
-            <li>
-              <a href="https://invisv.com/" className="navlogo">
-                INVISV
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <p>Browser not supported.</p>
-    </div>
-  );
-};
-
-const PreJoin = () => {
+export const PreJoinPage = () => {
   // state to pass onto room
   const [name, setName] = useState<string>(generateName());
   const [videoEnabled, setVideoEnabled] = useState(false);
@@ -227,13 +205,4 @@ const PreJoin = () => {
       </main>
     </div>
   );
-};
-
-export const PreJoinPage = () => {
-  const isChrome = navigator.userAgent.includes("Chrome");
-  if (isChrome) {
-    return <PreJoin />;
-  } else {
-    return <BrowserNotSupported />;
-  }
 };
