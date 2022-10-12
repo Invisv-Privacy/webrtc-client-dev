@@ -20,11 +20,7 @@ import { useState, useEffect } from "react";
 import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const serverList = {
-  sjc: "wss://sjc.livekit.stations.invisv.com",
-  iad: "wss://iad.livekit.stations.invisv.com",
-  sjctest: "wss://sjc-test.livekit.stations.invisv.com",
-};
+import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
@@ -42,14 +38,9 @@ export const RoomPage = () => {
   const password = passwordQuery || "";
 
   const serverQuery = query.get("s") || "";
-  const server =
-    serverQuery in serverList
-      ? serverQuery
-      : process.env.REACT_APP_WEBRTC_SERVER || "";
-  const url: string | undefined =
-    server in serverList
-      ? serverList[server]
-      : process.env.REACT_APP_WEBRTC_ENDPOINT;
+
+  const server = getServerFromQuery(serverQuery);
+  const url = getServerUrlFromQuery(serverQuery);
 
   useEffect(() => {
     if (timeRemaining > 0) {
@@ -63,13 +54,13 @@ export const RoomPage = () => {
     }
   }, [timeRemaining]);
 
-  if (!url || !token || !room || !server || !password) {
+  if (!url || !token || !room || !password) {
     return <div>url and token are required</div>;
   }
 
   const params: { [key: string]: string } = {
-    r: room!,
-    s: server!,
+    r: room,
+    s: server,
     k: password,
   };
 
@@ -221,6 +212,10 @@ export const RoomPage = () => {
           }}
           onLeave={onLeave}
         />
+        <div className="privacyLabels">
+          <div>End-to-End Encryption Enabled</div>
+          <div>Metadata Privacy Security Enabled</div>
+        </div>
       </div>
     </DisplayContext.Provider>
   );

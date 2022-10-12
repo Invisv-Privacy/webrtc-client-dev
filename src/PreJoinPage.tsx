@@ -12,6 +12,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import cryptoRandomString from "crypto-random-string";
 import axios from "axios";
 import { generateName } from "./names";
+import { getServerFromQuery } from "./serverList";
 
 const BrowserNotSupported = () => {
   return (
@@ -61,10 +62,7 @@ const PreJoin = () => {
       : cryptoRandomString({ length: 16, type: "url-safe" });
 
   const serverQuery = query.get("s");
-  const server =
-    serverQuery !== undefined && serverQuery !== null
-      ? serverQuery
-      : process.env.REACT_APP_WEBRTC_SERVER!;
+  const server = getServerFromQuery(serverQuery);
 
   useEffect(() => {
     if (name) {
