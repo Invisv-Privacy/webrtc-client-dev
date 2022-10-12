@@ -4,7 +4,13 @@ import {
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Room, RoomEvent, setLogLevel, VideoPresets, DisconnectReason } from "livekit-client";
+import {
+  Room,
+  RoomEvent,
+  setLogLevel,
+  VideoPresets,
+  DisconnectReason,
+} from "livekit-client";
 import {
   DisplayContext,
   DisplayOptions,
@@ -15,10 +21,10 @@ import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const serverList = {
-  sjc: 'wss://sjc.livekit.stations.invisv.com',
-  iad: 'wss://iad.livekit.stations.invisv.com',
-  sjctest: 'wss://sjc-test.livekit.stations.invisv.com',
-}
+  sjc: "wss://sjc.livekit.stations.invisv.com",
+  iad: "wss://iad.livekit.stations.invisv.com",
+  sjctest: "wss://sjc-test.livekit.stations.invisv.com",
+};
 
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
@@ -44,10 +50,13 @@ export const RoomPage = () => {
     server in serverList
       ? serverList[server]
       : process.env.REACT_APP_WEBRTC_ENDPOINT;
-  
+
   useEffect(() => {
     if (timeRemaining > 0) {
-      const timer = setInterval(() => setTimeRemaining(timeRemaining - 1), 1000);
+      const timer = setInterval(
+        () => setTimeRemaining(timeRemaining - 1),
+        1000
+      );
       return () => clearInterval(timer);
     } else {
       return () => {};
@@ -64,13 +73,15 @@ export const RoomPage = () => {
     k: password,
   };
 
-  const joinLink = window.location.protocol + 
-    "//" + 
-    window.location.hostname + 
-    (window.location.port !== "" ? (":" + window.location.port) : "") + 
-    window.location.pathname + 
+  const joinLink =
+    window.location.protocol +
+    "//" +
+    window.location.hostname +
+    (window.location.port !== "" ? ":" + window.location.port : "") +
+    window.location.pathname +
     "#" +
-    "?" + new URLSearchParams(params).toString();
+    "?" +
+    new URLSearchParams(params).toString();
 
   setLogLevel("debug");
 
@@ -123,14 +134,17 @@ export const RoomPage = () => {
       <div className="roomContainer">
         <div className="topBar">
           <div>
-            <a href="https://invisv.com/booth" className="boothlogo">Booth</a>
+            <a href="https://invisv.com/booth" className="boothlogo">
+              Booth
+            </a>
           </div>
           <div className="right">
-            {timeRemaining > 0 &&
-            <div className="countdownTimer">
-              Time Remaining: {Math.floor(timeRemaining/60)}:{(timeRemaining%60).toString().padStart(2, "0")}
-            </div>
-            }
+            {timeRemaining > 0 && (
+              <div className="countdownTimer">
+                Time Remaining: {Math.floor(timeRemaining / 60)}:
+                {(timeRemaining % 60).toString().padStart(2, "0")}
+              </div>
+            )}
             <div>
               <input
                 id="showStats"
@@ -164,10 +178,15 @@ export const RoomPage = () => {
               <span>{numParticipants}</span>
             </div>
             <div>
-              <p>
-                Join link: {joinLink}
-              </p>
-              <button onClick={() => {navigator.clipboard.writeText(joinLink)}}> Copy to Clipboard </button>
+              <p>Join link: {joinLink}</p>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(joinLink);
+                }}
+              >
+                {" "}
+                Copy to Clipboard{" "}
+              </button>
             </div>
           </div>
         </div>

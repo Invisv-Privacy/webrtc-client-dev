@@ -14,19 +14,25 @@ import axios from "axios";
 import { generateName } from "./names";
 
 const BrowserNotSupported = () => {
-  return ( 
+  return (
     <div className="prejoin">
-    <header>
-    <a href="https://invisv.com/booth" className="boothlogo">Booth</a>
-      <nav>
-        <ul>
-          <li><a href="https://invisv.com/" className="navlogo">INVISV</a></li>
-        </ul>
-      </nav>
-    </header>
-    <p>Browser not supported.</p>
+      <header>
+        <a href="https://invisv.com/booth" className="boothlogo">
+          Booth
+        </a>
+        <nav>
+          <ul>
+            <li>
+              <a href="https://invisv.com/" className="navlogo">
+                INVISV
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <p>Browser not supported.</p>
     </div>
-    );
+  );
 };
 
 const PreJoin = () => {
@@ -44,15 +50,22 @@ const PreJoin = () => {
 
   const roomQuery = query.get("r");
   const room: string =
-    roomQuery !== undefined && roomQuery !== null ? roomQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
+    roomQuery !== undefined && roomQuery !== null
+      ? roomQuery
+      : cryptoRandomString({ length: 16, type: "url-safe" });
 
   const passwordQuery = query.get("k");
   const password: string =
-    passwordQuery !== undefined && passwordQuery !== null ? passwordQuery : cryptoRandomString({ length: 16, type: 'url-safe' });
+    passwordQuery !== undefined && passwordQuery !== null
+      ? passwordQuery
+      : cryptoRandomString({ length: 16, type: "url-safe" });
 
   const serverQuery = query.get("s");
-  const server = serverQuery !== undefined && serverQuery !== null ? serverQuery : process.env.REACT_APP_WEBRTC_SERVER!;
-  
+  const server =
+    serverQuery !== undefined && serverQuery !== null
+      ? serverQuery
+      : process.env.REACT_APP_WEBRTC_SERVER!;
+
   useEffect(() => {
     if (name) {
       setConnectDisabled(false);
@@ -156,10 +169,16 @@ const PreJoin = () => {
   return (
     <div className="prejoin">
       <header>
-      <a href="https://invisv.com/booth" className="boothlogo">Booth</a>
+        <a href="https://invisv.com/booth" className="boothlogo">
+          Booth
+        </a>
         <nav>
           <ul>
-            <li><a href="https://invisv.com/" className="navlogo">INVISV</a></li>
+            <li>
+              <a href="https://invisv.com/" className="navlogo">
+                INVISV
+              </a>
+            </li>
           </ul>
         </nav>
       </header>
@@ -213,7 +232,7 @@ const PreJoin = () => {
 };
 
 export const PreJoinPage = () => {
-  const isChrome = navigator.userAgent.includes("Chrome")
+  const isChrome = navigator.userAgent.includes("Chrome");
   if (isChrome) {
     return <PreJoin />;
   } else {
