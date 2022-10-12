@@ -53,10 +53,14 @@ a:hover {
 }
 
 .entrySection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 40px;
-  gap: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.privacyLabels {
+  margin-top: -100px;
+  margin-right: 0px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -73,6 +77,14 @@ a:hover {
   .prejoin main {
     width: 100%;
   }
+}
+
+.green {
+  background-color: #004620aa;
+}
+
+button.green:hover {
+  background-color: #004620;
 }
 
 .entrySection .label {
@@ -120,12 +132,6 @@ a:hover {
 
 .controlSection {
   margin-top: 30px;
-  display: grid;
-  grid-template-columns: auto auto minmax(100px, min-content);
-}
-
-.controlSection .right {
-  grid-column: 3 / 4;
 }
 
 .roomContainer {
@@ -147,11 +153,11 @@ a:hover {
   gap: 16px;
 }
 
-.iconButton {
+button {
   cursor: pointer;
 }
 
-.iconButton:disabled {
+button:disabled {
   cursor: auto;
 }
 
@@ -306,8 +312,8 @@ nav.is-dark li.is-selected::after {
 }
 
 .hero .content {
-  margin: auto;
-	width: 66%;
+  margin: 20px auto 0px auto;
+  width: 66%;
 }
 
 .hero.is-short {

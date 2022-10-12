@@ -177,6 +177,15 @@ const PreJoin = () => {
                 />
               </div>
             </div>
+            <div className="right">
+              <ControlButton
+                label="Connect"
+                disabled={connectDisabled}
+                icon={faBolt}
+                onClick={connectToRoom}
+                className="green"
+              />
+            </div>
           </div>
 
           <div className="videoSection">
@@ -194,14 +203,6 @@ const PreJoin = () => {
                 isEnabled={videoTrack !== undefined}
                 onClick={toggleVideo}
                 onSourceSelected={selectVideoDevice}
-              />
-            </div>
-            <div className="right">
-              <ControlButton
-                label="Connect"
-                disabled={connectDisabled}
-                icon={faBolt}
-                onClick={connectToRoom}
               />
             </div>
           </div>
