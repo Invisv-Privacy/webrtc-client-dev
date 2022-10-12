@@ -15,7 +15,7 @@
     },
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "6.1.1",
-        "@livekit/react-components": "^1.0.1",
+        "@livekit/react-components": "1.0.3",
         "@livekit/react-core": "^1.0.1",
         "axios": "^0.27.2",
         "crypto-random-string": "5.0.0",

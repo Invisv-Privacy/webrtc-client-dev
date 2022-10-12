@@ -1581,15 +1581,15 @@
   resolved "https://registry.npmjs.org/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@livekit/react-components@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/@livekit/react-components/-/react-components-1.0.1.tgz"
-  integrity sha512-/+GGOVGmjSeqz3VOW0itJ+gnAsceJWA1AWFPDsrQSiiyVPG2uY7fdGEzrr1cEOxvKdUS6Wy5La8r0hdEANKkFg==
+"@livekit/react-components@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@livekit/react-components/-/react-components-1.0.3.tgz#a96d88c3903b9ff830b578cdf2d5a4baaaa0947f"
+  integrity sha512-0QosydSxWMocfjotcr9SjrcDbmodbhPVLYqn/jLp0GBZ6bvCRC83Osqf++Uk+Z/48BBlgaeYul56q2XAtz2Gqg==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^6.1.1"
     "@fortawesome/free-solid-svg-icons" "^6.1.1"
     "@fortawesome/react-fontawesome" "^0.1.18"
-    "@livekit/react-core" "^1.0.1"
+    "@livekit/react-core" "^1.0.3"
     "@types/react-responsive" "^8.0.2"
     react-aspect-ratio "^1.0.50"
     react-responsive "^8.2.0"
@@ -1599,6 +1599,11 @@
   version "1.0.2"
   resolved "https://registry.npmjs.org/@livekit/react-core/-/react-core-1.0.2.tgz"
   integrity sha512-aHsb7nWL0QSMx72EQ1Xb9fshNgidnafRL+CouNYoljd2XqDm1Yv6bRGijBe1gXyzhQLNzttWaBWcbwlU1/jq+A==
+
+"@livekit/react-core@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@livekit/react-core/-/react-core-1.0.3.tgz#9307642495536aad5751ccc3eba7e01f3b805604"
+  integrity sha512-hpQmU02EsanCIBRq7fsIfoZHtjOMUEhGcP0QclB4ke3XDfhZPXL2uqfdVLz8CWUpEN04Aygt3kM1olbXsyr8fg==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
