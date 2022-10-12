@@ -63,6 +63,7 @@ a:hover {
 .privacyLabels {
   margin-top: -100px;
   margin-right: 0px;
+  padding-top: 12px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -149,7 +150,7 @@ button.green:hover {
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 12px;
+  padding: 12px;
 }
 
 .topBar .right {
