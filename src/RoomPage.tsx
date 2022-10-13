@@ -212,8 +212,8 @@ export const RoomPage = () => {
           onLeave={onLeave}
         />
         <div className="privacyLabels">
-          <div>End-to-End Encryption Enabled</div>
-          <div>Metadata Privacy Security Enabled</div>
+          <div>🔐 End-to-End Encryption Enabled</div>
+          <div>✅ Metadata Security Enabled</div>
         </div>
       </div>
     </DisplayContext.Provider>
