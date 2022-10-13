@@ -31,13 +31,13 @@ export const PreJoinPage = () => {
   const room: string =
     roomQuery !== undefined && roomQuery !== null
       ? roomQuery
-      : cryptoRandomString({ length: 16, type: "url-safe" });
+      : cryptoRandomString({ length: 20, type: "url-safe" });
 
   const passwordQuery = query.get("k");
   const password: string =
     passwordQuery !== undefined && passwordQuery !== null
       ? passwordQuery
-      : cryptoRandomString({ length: 16, type: "url-safe" });
+      : cryptoRandomString({ length: 20, type: "url-safe" });
 
   const serverQuery = query.get("s");
   const server = getServerFromQuery(serverQuery);
