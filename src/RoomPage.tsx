@@ -136,7 +136,7 @@ export const RoomPage = () => {
                 {(timeRemaining % 60).toString().padStart(2, "0")}
               </div>
             )}
-            <div>
+            <div className="showStatsContainer">
               <input
                 id="showStats"
                 type="checkbox"
