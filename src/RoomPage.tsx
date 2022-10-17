@@ -19,6 +19,7 @@ import {
 import { useState, useEffect } from "react";
 import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import InvisvIcon from "./InvisvIcon";
 
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
@@ -213,7 +214,9 @@ export const RoomPage = () => {
         />
         <div className="privacyLabels">
           <div>🔐 End-to-End Encryption Enabled</div>
-          <div>✅ Metadata Security Enabled</div>
+          <div className="metadataSecurity">
+            <InvisvIcon /> Metadata Security Enabled
+          </div>
         </div>
       </div>
     </DisplayContext.Provider>
