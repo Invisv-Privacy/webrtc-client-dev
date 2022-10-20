@@ -1,6 +1,6 @@
 {
     "name": "invisv-webrtc-client",
-    "homepage": "https://invisv-privacy.github.io/webrtc-client/",
+    "homepage": "https://live.booth.video",
     "version": "1.0.0",
     "private": true,
     "scripts": {
