@@ -162,7 +162,12 @@ export const PreJoinPage = () => {
         <div className="content">
           <div className="entrySection">
             <div>
-              <div className="label">Name</div>
+              <div className="label">
+                Name{" "}
+                <span className="labelHint">
+                  (revealed to server and other participants)
+                </span>
+              </div>
               <div>
                 <input
                   type="text"
