@@ -297,7 +297,7 @@ button.green:hover {
 }
 
 .roomContainer {
-  height: calc(100vh - 100px);
+  height: calc(100vh - 125px);
 }
 
 .topBar {
@@ -349,7 +349,7 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 130px;
+  height: 200px;
   z-index: 2;
 }
 
@@ -358,9 +358,11 @@ header {
   position: absolute;
   top: 60px;
   left: 8%;
-  width: 200px;
-  height: 58px;
-  background-image: url("./img/boothfulllogo_reverse.png");
+  width: 260px;
+  height: 125px;
+  background-size: 250px;
+  background-image: url("./img/boothfulllogo_reverse_concentric.png");
+  background-repeat: no-repeat;
 }
 
 @media only screen and (max-width: 640px) {
@@ -380,7 +382,10 @@ header {
   color: rgba(55, 255, 255, 0);
   width: 200px;
   height: 58px;
-  background-image: url("./img/boothfulllogo_reverse.png");
+  height: 100px;
+  background-size: 200px;
+  background-image: url("./img/boothfulllogo_reverse_concentric.png");
+  background-repeat: no-repeat;
 }
 
 .navlogo {
