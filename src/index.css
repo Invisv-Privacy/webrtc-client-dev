@@ -189,6 +189,13 @@ h3 {
   align-items: center;
 }
 
+.label .labelHint {
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "PlexSans", sans-serif;
+  margin-left: 0.5rem;
+}
+
 .privacyLabels {
   margin-top: -100px;
   margin-right: 0px;
