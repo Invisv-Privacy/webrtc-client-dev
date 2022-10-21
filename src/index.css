@@ -192,7 +192,8 @@ h3 {
 .privacyLabels {
   margin-top: -100px;
   margin-right: 0px;
-  padding-top: 12px;
+  margin-left: 1rem;
+  padding-top: 30px;
   font-size: 1rem;
 }
 
