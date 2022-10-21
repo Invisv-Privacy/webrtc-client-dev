@@ -304,15 +304,14 @@ button.green:hover {
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   padding: 12px;
 }
 
 .topBar .right {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  align-items: center;
+  display: flex;
   gap: 16px;
+  align-items: end;
 }
 
 button {
