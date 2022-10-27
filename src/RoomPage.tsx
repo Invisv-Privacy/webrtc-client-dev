@@ -213,7 +213,6 @@ export const RoomPage = () => {
           onLeave={onLeave}
         />
         <div className="privacyLabels">
-          <div>🔒 End-to-End Encryption Enabled</div>
           <div className="metadataSecurity">
             <InvisvIcon /> Metadata Security Enabled
           </div>
