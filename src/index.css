@@ -520,3 +520,32 @@ nav.is-dark li.is-selected::after {
   text-align: center;
   margin-top: 40px;
 }
+
+.tooltip {
+  position: absolute;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 30vw;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 25px;
+  left: 15vw;
+  opacity: 0;
+  transition: opacity 0.3s;
+  transform:translateX(-50%);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+

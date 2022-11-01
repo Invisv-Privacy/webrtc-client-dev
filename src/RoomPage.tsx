@@ -213,8 +213,13 @@ export const RoomPage = () => {
           onLeave={onLeave}
         />
         <div className="privacyLabels">
-          <div className="metadataSecurity">
+          <div className="metadataSecurity tooltip">
             <InvisvIcon /> Metadata Security Enabled
+            <span className="tooltiptext">
+              First-of-its-kind metadata security: servers and third parties
+              can't see the network identities or conversations of participants
+              in a Booth.
+            </span>
           </div>
         </div>
       </div>
