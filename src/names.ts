@@ -47,7 +47,6 @@ const adjectives = [
   "Disguised",
   "Camouflaged",
   "Hidden",
-  "Masked",
   "Masquerading",
   "Unknown",
   "Obscure",
