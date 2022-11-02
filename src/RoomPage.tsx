@@ -176,7 +176,7 @@ export const RoomPage = () => {
                 }}
               >
                 {" "}
-                Copy Join Link to Clipboard{" "}
+                Copy Join Link{" "}
               </button>
             </div>
           </div>
