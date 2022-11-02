@@ -145,7 +145,7 @@ export const PreJoinPage = () => {
   return (
     <div className="prejoin">
       <header>
-        <a href="https://invisv.com/booth" className="boothlogo">
+        <a href="https://booth.video" className="boothlogo">
           Booth
         </a>
         <nav>

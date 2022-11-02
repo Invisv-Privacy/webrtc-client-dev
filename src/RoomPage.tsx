@@ -126,7 +126,7 @@ export const RoomPage = () => {
       <div className="roomContainer">
         <div className="topBar">
           <div>
-            <a href="https://invisv.com/booth" className="boothlogo">
+            <a href="https://booth.video" className="boothlogo">
               Booth
             </a>
           </div>
