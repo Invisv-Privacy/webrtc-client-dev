@@ -301,7 +301,7 @@ button.green:hover {
 }
 
 .roomContainer {
-  height: calc(100vh - 125px);
+  height: 95vh;
 }
 
 .topBar {
@@ -309,13 +309,14 @@ button.green:hover {
   grid-template-columns: auto auto;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 12px;
 }
 
 .topBar .right {
   display: flex;
   gap: 16px;
   align-items: flex-end;
+  padding-right: 12px;
+  padding-bottom: 12px;
 }
 
 button {
@@ -383,10 +384,9 @@ header {
 
 .roomContainer .boothlogo {
   color: rgba(55, 255, 255, 0);
-  width: 200px;
-  height: 58px;
-  height: 100px;
-  background-size: 200px;
+  height: 5vh;
+  width: 10vh;
+  background-size: 10vh 5vh;
   background-image: url("./img/boothfulllogo_reverse_concentric2.png");
   background-repeat: no-repeat;
 }
