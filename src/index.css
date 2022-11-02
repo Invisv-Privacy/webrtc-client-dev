@@ -279,6 +279,8 @@ button.green:hover {
   width: 100%;
   aspect-ratio: 16 / 9;
   margin-top: 20px;
+  max-height: 58vh;
+  overflow-y: hidden;
 }
 
 .videoSection video {
@@ -350,14 +352,14 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 200px;
+  height: 150px;
   z-index: 2;
 }
 
 .prejoin .boothlogo {
   color: rgba(55, 255, 255, 0);
   position: absolute;
-  top: 60px;
+  top: 25px;
   left: 8%;
   width: 260px;
   height: 125px;
