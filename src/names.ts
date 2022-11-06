@@ -28,6 +28,7 @@ const plants = [
   "Pepino",
   "Persimmon",
   "Pineapple",
+  "Pitangatuba",
   "Pomegranate",
   "Rambutan",
   "Sapodilla",
