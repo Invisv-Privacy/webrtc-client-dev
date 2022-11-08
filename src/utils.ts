@@ -1,3 +1,5 @@
+import cryptoRandomString from "crypto-random-string";
+
 const plants = [
   "Achachairu",
   "Avocado",
@@ -58,4 +60,13 @@ export function generateName(): string {
   const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
   const num = Math.floor(Math.random() * 100);
   return `${adjective} ${plant} ${num}`;
+}
+
+export function generateRandomizedString(param: string | null): string {
+  const result: string =
+    param !== undefined && param !== null
+      ? param
+      : cryptoRandomString({ length: 20, type: "url-safe" });
+  
+  return result;
 }

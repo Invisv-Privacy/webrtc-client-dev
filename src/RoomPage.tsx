@@ -20,7 +20,7 @@ import { useState, useEffect } from "react";
 import "react-aspect-ratio/aspect-ratio.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import InvisvIcon from "./InvisvIcon";
-
+import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
 export const RoomPage = () => {
@@ -59,22 +59,6 @@ export const RoomPage = () => {
     return <div>url and token are required</div>;
   }
 
-  const params: { [key: string]: string } = {
-    r: room,
-    s: server,
-    k: password,
-  };
-
-  const joinLink =
-    window.location.protocol +
-    "//" +
-    window.location.hostname +
-    (window.location.port !== "" ? ":" + window.location.port : "") +
-    window.location.pathname +
-    "#" +
-    "?" +
-    new URLSearchParams(params).toString();
-
   setLogLevel("debug");
 
   if (
@@ -84,6 +68,12 @@ export const RoomPage = () => {
   ) {
     return <div>Unable to connect to insecure websocket from https</div>;
   }
+
+  const params: { [key: string]: string } = {
+    r: room,
+    s: server,
+    k: password,
+};
 
   const onLeave = () => {
     navigate({
@@ -170,14 +160,7 @@ export const RoomPage = () => {
               <span>{numParticipants}</span>
             </div>
             <div>
-              <button
-                onClick={() => {
-                  navigator.clipboard.writeText(joinLink);
-                }}
-              >
-                {" "}
-                Copy Join Link{" "}
-              </button>
+              <CopyJoinLink room={room} password={password} server={server} />
             </div>
           </div>
         </div>

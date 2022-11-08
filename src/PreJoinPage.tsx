@@ -9,10 +9,10 @@ import { VideoRenderer } from "@livekit/react-core";
 import { ReactElement, useEffect, useState } from "react";
 import { AspectRatio } from "react-aspect-ratio";
 import { useNavigate, useLocation } from "react-router-dom";
-import cryptoRandomString from "crypto-random-string";
 import axios from "axios";
-import { generateName } from "./names";
+import { generateName, generateRandomizedString } from "./utils";
 import { getServerFromQuery } from "./serverList";
+import { CopyJoinLink } from './joinLink';
 
 export const PreJoinPage = () => {
   // state to pass onto room
@@ -27,17 +27,8 @@ export const PreJoinPage = () => {
   const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
 
-  const roomQuery = query.get("r");
-  const room: string =
-    roomQuery !== undefined && roomQuery !== null
-      ? roomQuery
-      : cryptoRandomString({ length: 20, type: "url-safe" });
-
-  const passwordQuery = query.get("k");
-  const password: string =
-    passwordQuery !== undefined && passwordQuery !== null
-      ? passwordQuery
-      : cryptoRandomString({ length: 20, type: "url-safe" });
+  const [room] = useState<string>(generateRandomizedString(query.get("r")));
+  const [password] = useState<string>(generateRandomizedString(query.get("k")));
 
   const serverQuery = query.get("s");
   const server = getServerFromQuery(serverQuery);
@@ -178,6 +169,7 @@ export const PreJoinPage = () => {
               </div>
             </div>
             <div className="right">
+              <CopyJoinLink room={room} password={password} server={server} />&emsp;
               <ControlButton
                 label="Connect"
                 disabled={connectDisabled}
