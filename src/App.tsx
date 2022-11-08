@@ -21,7 +21,7 @@ const BrowserNotSupported = () => {
         </nav>
       </header>
       <div className="browserSupportContainer">
-        <h1>Browser not supported. Please use a chromium based browser instead.</h1>
+        <h1>Browser not supported. Please use a chromium based browser (Vivaldi, Brave, Chrome, Edge, etc.) instead.</h1>
       </div>
     </div>
   );
