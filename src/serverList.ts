@@ -1,10 +1,10 @@
 const serverList = {
-  sjc: "wss://sjc.livekit.stations.invisv.com",
   lax: "wss://lax.livekit.stations.invisv.com",
   iad: "wss://iad.livekit.stations.invisv.com",
   lhr: "wss://lhr.livekit.stations.invisv.com",
   sin: "wss://sin.livekit.stations.invisv.com",
   fra: "wss://fra.livekit.stations.invisv.com",
+  sjc: "wss://sjc.livekit.stations.invisv.com",
   sjctest: "wss://sjc-test.livekit.stations.invisv.com",
 };
 
