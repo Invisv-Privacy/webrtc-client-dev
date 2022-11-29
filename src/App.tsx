@@ -21,15 +21,42 @@ const BrowserNotSupported = () => {
         </nav>
       </header>
       <div className="browserSupportContainer">
-        <h1>Browser not supported. Please use a chromium based browser (Vivaldi, Brave, Chrome, Edge, etc.) instead.</h1>
+        <h1>
+          Browser not supported. Please use one of the following: Safari,
+          Chrome, Vivaldi, Brave, Edge instead.
+        </h1>
       </div>
     </div>
   );
 };
 
+// From webrtc/samples:
+// https://github.com/webrtc/samples/blob/8ffcd6d52e83ae2f857011c29dffc9bbff264eb4/src/content/insertable-streams/endtoend-encryption/js/main.js#L42-L57
+const supportsE2EE = () => {
+  // @ts-expect-error
+  let hasEnoughAPIs = !!window.RTCRtpScriptTransform;
+
+  if (!hasEnoughAPIs) {
+    const supportsInsertableStreams =
+      // @ts-expect-error
+      !!RTCRtpSender.prototype.createEncodedStreams;
+
+    let supportsTransferableStreams = false;
+    try {
+      const stream = new ReadableStream();
+      // @ts-expect-error
+      window.postMessage(stream, "*", [stream]);
+      supportsTransferableStreams = true;
+    } catch (e) {
+      console.error("Transferable streams are not supported.");
+    }
+    hasEnoughAPIs = supportsInsertableStreams && supportsTransferableStreams;
+  }
+  return hasEnoughAPIs;
+};
+
 const App = () => {
-  const isChrome = navigator.userAgent.includes("Chrome");
-  if (isChrome) {
+  if (supportsE2EE()) {
     return (
       <div className="container">
         <Router>
