@@ -22,8 +22,8 @@ const BrowserNotSupported = () => {
       </header>
       <div className="browserSupportContainer">
         <h1>
-          Browser not supported. Please use one of the following: Safari,
-          Chrome, Vivaldi, Brave, Edge instead.
+          Requires a browser with WebRTC end-to-end encryption support (Chrome,
+          Safari, Edge, Vivaldi, Brave).
         </h1>
       </div>
     </div>
