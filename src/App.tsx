@@ -39,7 +39,7 @@ const supportsE2EE = () => {
   if (!hasEnoughAPIs) {
     const supportsInsertableStreams =
       // @ts-expect-error
-      !!RTCRtpSender.prototype.createEncodedStreams;
+      !!window.RTCRtpSender?.prototype.createEncodedStreams;
 
     let supportsTransferableStreams = false;
     try {
