@@ -168,6 +168,7 @@ export const PreJoinPage = () => {
                 />
               </div>
             </div>
+            <div class="center"><div class="label sc"><font size="6">Preview</font></div></div>
             <div className="right">
               <CopyJoinLink room={room} password={password} server={server} />&emsp;
               <ControlButton
