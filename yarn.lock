@@ -6808,8 +6808,8 @@ lines-and-columns@^1.1.6:
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
 "livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git":
-  version "1.4.1"
-  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#2df32dfbc6d3a11206ddd289fb24810db5d6619c"
+  version "1.5.0"
+  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#5f22723de0edcde42590026b62c36a24e5c184c5"
   dependencies:
     async-await-queue "^1.2.1"
     events "^3.3.0"
