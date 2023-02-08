@@ -10,6 +10,7 @@ import {
   setLogLevel,
   VideoPresets,
   DisconnectReason,
+  createE2EEKey,
   ExternalE2EEKeyProvider,
 } from "livekit-client";
 import {
@@ -25,6 +26,8 @@ import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider();
+const cryptoKey = createE2EEKey();
+
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
   const [displayOptions, setDisplayOptions] = useState<DisplayOptions>({
@@ -173,7 +176,7 @@ export const RoomPage = () => {
             await room.setE2EEEnabled(true);
 
             // @ts-ignore
-            e2eeKeyProvider.setKey(Uint8Array.from("password123"));
+            e2eeKeyProvider.setKey(Uint8Array.from(cryptoKey));
 
             onConnected(room, query);
             // setTimeRemaining(room.roomTimeRemaining);
