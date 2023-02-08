@@ -45,9 +45,6 @@ export const RoomPage = () => {
   const server = getServerFromQuery(serverQuery);
   const url = getServerUrlFromQuery(serverQuery);
 
-  // @ts-ignore
-  e2eeKeyProvider.setKey(Uint8Array.from("password123"));
-
   useEffect(() => {
     if (timeRemaining > 0) {
       const timer = setInterval(
@@ -172,8 +169,12 @@ export const RoomPage = () => {
         <LiveKitRoom
           url={url}
           token={token}
-          onConnected={(room) => {
-            room.setE2EEEnabled(true);
+          onConnected={async (room) => {
+            await room.setE2EEEnabled(true);
+
+            // @ts-ignore
+            e2eeKeyProvider.setKey(Uint8Array.from("password123"));
+
             onConnected(room, query);
             // setTimeRemaining(room.roomTimeRemaining);
             room.on(RoomEvent.ParticipantConnected, () =>
