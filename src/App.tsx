@@ -44,7 +44,6 @@ const supportsE2EE = () => {
     let supportsTransferableStreams = false;
     try {
       const stream = new ReadableStream();
-      // @ts-expect-error
       window.postMessage(stream, "*", [stream]);
       supportsTransferableStreams = true;
     } catch (e) {
