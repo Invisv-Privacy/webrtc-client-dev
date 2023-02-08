@@ -10,6 +10,7 @@ import {
   setLogLevel,
   VideoPresets,
   DisconnectReason,
+  ExternalE2EEKeyProvider,
 } from "livekit-client";
 import {
   DisplayContext,
@@ -23,6 +24,7 @@ import InvisvIcon from "./InvisvIcon";
 import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
+const e2eeKeyProvider = new ExternalE2EEKeyProvider();
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
   const [displayOptions, setDisplayOptions] = useState<DisplayOptions>({
@@ -42,6 +44,9 @@ export const RoomPage = () => {
 
   const server = getServerFromQuery(serverQuery);
   const url = getServerUrlFromQuery(serverQuery);
+
+  // @ts-ignore
+  e2eeKeyProvider.setKey(Uint8Array.from("password123"));
 
   useEffect(() => {
     if (timeRemaining > 0) {
@@ -73,7 +78,7 @@ export const RoomPage = () => {
     r: room,
     s: server,
     k: password,
-};
+  };
 
   const onLeave = () => {
     navigate({
@@ -168,8 +173,9 @@ export const RoomPage = () => {
           url={url}
           token={token}
           onConnected={(room) => {
+            room.setE2EEEnabled(true);
             onConnected(room, query);
-            setTimeRemaining(room.roomTimeRemaining);
+            // setTimeRemaining(room.roomTimeRemaining);
             room.on(RoomEvent.ParticipantConnected, () =>
               updateParticipantSize(room)
             );
@@ -192,6 +198,8 @@ export const RoomPage = () => {
             },
             // @ts-ignore
             e2ePassword: password,
+
+            e2ee: { keyProvider: e2eeKeyProvider },
           }}
           onLeave={onLeave}
         />
