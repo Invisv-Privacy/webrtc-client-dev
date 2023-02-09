@@ -197,7 +197,7 @@ export const RoomPage = () => {
             adaptiveStream: true,
             dynacast: true,
             publishDefaults: {
-              simulcast: true,
+              simulcast: false,
             },
             videoCaptureDefaults: {
               resolution: VideoPresets.h720.resolution,
