@@ -10,7 +10,6 @@ import {
   setLogLevel,
   VideoPresets,
   DisconnectReason,
-  createE2EEKey,
   ExternalE2EEKeyProvider,
 } from "livekit-client";
 import {
@@ -26,7 +25,10 @@ import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider();
-const cryptoKey = createE2EEKey();
+const cryptoKey = new Uint8Array(32);
+// Just testing w/ dumb key
+// @ts-ignore
+cryptoKey.forEach((v, i, array) => (array[i] = i));
 
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
