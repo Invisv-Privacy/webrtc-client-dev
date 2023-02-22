@@ -25,10 +25,14 @@ import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider();
+
 const cryptoKey = new Uint8Array(32);
 // Just testing w/ dumb key
 // @ts-ignore
 cryptoKey.forEach((v, i, array) => (array[i] = i));
+
+// @ts-ignore
+e2eeKeyProvider.setKey(Uint8Array.from(cryptoKey));
 
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
@@ -176,9 +180,6 @@ export const RoomPage = () => {
           token={token}
           onConnected={async (room) => {
             await room.setE2EEEnabled(true);
-
-            // @ts-ignore
-            e2eeKeyProvider.setKey(Uint8Array.from(cryptoKey));
 
             onConnected(room, query);
             // setTimeRemaining(room.roomTimeRemaining);
