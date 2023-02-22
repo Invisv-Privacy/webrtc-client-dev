@@ -6,6 +6,10 @@ const serverList = {
   fra: "wss://fra.livekit.stations.invisv.com",
   sjc: "wss://sjc.livekit.stations.invisv.com",
   sjctest: "wss://sjc-test.livekit.stations.invisv.com",
+  "lax-experiment-with-preproxy-1":
+    "wss://terraform-lax-experiment-with-preproxy-1.livekit.stations.invisv.com",
+  "lax-experiment-no-preproxy-1":
+    "wss://lax-experiment-no-preproxy-1.livekit.stations.invisv.com",
 };
 
 export const getServerFromQuery: (
