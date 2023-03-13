@@ -15,8 +15,8 @@
     },
     "dependencies": {
         "@fortawesome/free-solid-svg-icons": "6.1.1",
-        "@livekit/react-components": "1.0.3",
-        "@livekit/react-core": "^1.0.1",
+        "@livekit/react-components": "1.1.0",
+        "@livekit/react-core": "1.1.0",
         "axios": "^0.27.2",
         "crypto-random-string": "5.0.0",
         "livekit-client": "git+https://github.com/Invisv-Privacy/client-sdk-js.git#maxb/livekit-e2ee",
