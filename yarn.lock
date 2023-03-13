@@ -6807,9 +6807,9 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.npmjs.org/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
 
-"livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git#lukas/e2ee-next":
+"livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git#maxb/livekit-e2ee":
   version "1.6.2"
-  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#501b75de1c3c253539af7eef71ab06ecbe9947b7"
+  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#268d5a6b0ffcbe3624fdda3bafbed36e231fc660"
   dependencies:
     async-await-queue "^1.2.1"
     events "^3.3.0"
