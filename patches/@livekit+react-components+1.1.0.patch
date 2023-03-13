@@ -1,0 +1,58 @@
+diff --git a/node_modules/@livekit/react-components/dist/index.css b/node_modules/@livekit/react-components/dist/index.css
+index 7de5ef7..2704c56 100644
+--- a/node_modules/@livekit/react-components/dist/index.css
++++ b/node_modules/@livekit/react-components/dist/index.css
+@@ -70,12 +70,15 @@ video._2WNzJ {
+   color: #981010;
+ }
+ 
++._1iYSh {
++
++}
++
+ ._2kKks {
+ }
+ 
+ ._3w3nM {
+   display: inline-block;
+-  margin: 4px;
+   white-space: nowrap;
+ }
+ 
+@@ -90,6 +93,7 @@ video._2WNzJ {
+   font-weight: normal;
+   font-size: 14px;
+   white-space: nowrap;
++  margin: 4px;
+ }
+ 
+ ._hRq5k:active {
+diff --git a/node_modules/@livekit/react-components/dist/index.js b/node_modules/@livekit/react-components/dist/index.js
+index 589d6a3..d4c02ae 100644
+--- a/node_modules/@livekit/react-components/dist/index.js
++++ b/node_modules/@livekit/react-components/dist/index.js
+@@ -10,7 +10,7 @@ var reactCore = require('@livekit/react-core');
+ var reactAspectRatio = require('react-aspect-ratio');
+ var reactResponsive = require('react-responsive');
+ 
+-var styles = {"video":"_2WNzJ","participant":"_34YL4","speaker":"_1y2fW","placeholder":"_30KSQ","participantBar":"_2LCHl","name":"_55u8f","center":"_213aF","stats":"_te685","screenShare":"_1FIqv","iconRed":"_3LzZj","controlsWrapper":"_2kKks","buttonWrapper":"_3w3nM","button":"_hRq5k","icon":"_1Nxni","dangerButton":"_Rt0RH","dropdown":"_3Lz0y","hasDropdown":"_3Bgvz","separator":"_1VLMM","popoverMenu":"_3XXS4","list":"_dKNN7","container":"_14898","overlay":"_17KXW","unmuteButton":"_3QhLc"};
++var styles = {"video":"_2WNzJ","participant":"_34YL4","speaker":"_1y2fW","placeholder":"_30KSQ","participantBar":"_2LCHl","name":"_55u8f","center":"_213aF","stats":"_te685","screenShare":"_1FIqv","iconRed":"_3LzZj","controlButton":"_1iYSh","controlsWrapper":"_2kKks","buttonWrapper":"_3w3nM","button":"_hRq5k","icon":"_1Nxni","dangerButton":"_Rt0RH","dropdown":"_3Lz0y","hasDropdown":"_3Bgvz","separator":"_1VLMM","popoverMenu":"_3XXS4","list":"_dKNN7","container":"_14898","overlay":"_17KXW","unmuteButton":"_3QhLc"};
+ 
+ var ControlButton = function ControlButton(_ref) {
+   var label = _ref.label,
+@@ -307,6 +307,7 @@ var ControlsView = function ControlsView(_ref) {
+     var _enabled = !((_camPub$isMuted = camPub === null || camPub === void 0 ? void 0 : camPub.isMuted) != null ? _camPub$isMuted : true);
+ 
+     videoButton = React__default.createElement(VideoSelectButton, {
++      className: styles.controlButton,
+       isEnabled: _enabled,
+       isButtonDisabled: videoButtonDisabled,
+       onClick: function onClick() {
+@@ -333,6 +334,7 @@ var ControlsView = function ControlsView(_ref) {
+   if (enableScreenShare) {
+     var _enabled2 = room.localParticipant.isScreenShareEnabled;
+     screenButton = React__default.createElement(ControlButton, {
++      className: styles.controlButton,
+       label: _enabled2 ? 'Stop sharing' : 'Share screen',
+       icon: _enabled2 ? freeSolidSvgIcons.faStop : freeSolidSvgIcons.faDesktop,
+       disabled: screenButtonDisabled,

@@ -33,7 +33,7 @@ Checkout the livekit-react repo into the correct tag:
 
 ```sh
 [work-dir]$ cd livekit-react
-[work-dir/livekit-react]$ git checkout @livekit/react-components@1.0.1
+[work-dir/livekit-react]$ git checkout @livekit/react-components@1.1.0
 ```
 
 Now make sure that you have the correct package management tools:
@@ -49,7 +49,7 @@ Now configure yalc in both this package and in the @livekit/react-components pac
 [work-dir/livekit-react]$ yarn install
 [work-dir/livekit-react]$ yarn build
 [work-dir/livekit-react]$ cd packages/components
-[work-dir/livekit-react/packages/components]$ patch -p4 -i ../../../webrtc-client/patches/@livekit+react-components+1.0.1.patch
+[work-dir/livekit-react/packages/components]$ patch -p4 -i ../../../webrtc-client/patches/@livekit+react-components+1.1.0.patch
 [work-dir/livekit-react/packages/components]$ yalc publish
 [work-dir/livekit-react/packages/components]$ cd ../../../webrtc-client
 [work-dir/webrtc-client]$ yarn install
