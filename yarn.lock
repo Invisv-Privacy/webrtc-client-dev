@@ -6885,7 +6885,7 @@ lines-and-columns@^1.1.6:
 
 "livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git#maxb/livekit-e2ee":
   version "1.6.2"
-  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#268d5a6b0ffcbe3624fdda3bafbed36e231fc660"
+  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#b97a103afa4615f8acf91a42a2a86de87aa90736"
   dependencies:
     async-await-queue "^1.2.1"
     events "^3.3.0"
