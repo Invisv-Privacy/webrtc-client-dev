@@ -11,6 +11,7 @@ import {
   VideoPresets,
   DisconnectReason,
   ExternalE2EEKeyProvider,
+  TrackPublishDefaults,
 } from "livekit-client";
 import {
   DisplayContext,
@@ -23,6 +24,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import InvisvIcon from "./InvisvIcon";
 import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
+import { isSafari } from "./utils";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider({
   sharedKey: true,
@@ -124,6 +126,14 @@ export const RoomPage = () => {
     });
   };
 
+  const publishDefaults: TrackPublishDefaults = {
+    simulcast: true,
+  };
+
+  if (isSafari()) {
+    publishDefaults.videoCodec = "h264";
+  }
+
   return (
     <DisplayContext.Provider value={displayOptions}>
       <div className="roomContainer">
@@ -199,9 +209,7 @@ export const RoomPage = () => {
           roomOptions={{
             adaptiveStream: true,
             dynacast: true,
-            publishDefaults: {
-              simulcast: true,
-            },
+            publishDefaults,
             videoCaptureDefaults: {
               resolution: VideoPresets.h720.resolution,
             },

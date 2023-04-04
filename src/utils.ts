@@ -67,6 +67,26 @@ export function generateRandomizedString(param: string | null): string {
     param !== undefined && param !== null
       ? param
       : cryptoRandomString({ length: 20, type: "url-safe" });
-  
+
   return result;
+}
+
+// The following checks are just copied from livekit's client-sdk-js for convenience here
+export function isWeb(): boolean {
+  return typeof document !== "undefined";
+}
+
+export function isFireFox(): boolean {
+  if (!isWeb()) return false;
+  return navigator.userAgent.indexOf("Firefox") !== -1;
+}
+
+export function isSafari(): boolean {
+  if (!isWeb()) return false;
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
+export function isMobile(): boolean {
+  if (!isWeb()) return false;
+  return /Tablet|iPad|Mobile|Android|BlackBerry/.test(navigator.userAgent);
 }
