@@ -6894,7 +6894,7 @@ lines-and-columns@^1.1.6:
 
 "livekit-client@git+https://github.com/Invisv-Privacy/client-sdk-js.git#maxb/livekit-e2ee-4.3.23":
   version "1.7.0"
-  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#13dcb9f509f91fac41414fe884e6d6a3227298a4"
+  resolved "git+https://github.com/Invisv-Privacy/client-sdk-js.git#75366347f02d00380410ae8a38015829e7781a9b"
   dependencies:
     "@rollup/plugin-terser" "^0.4.0"
     async-await-queue "^1.2.1"
