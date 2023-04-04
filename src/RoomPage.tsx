@@ -25,6 +25,9 @@ import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider();
+const e2eeWorker = new Worker(
+  new URL("livekit-client/e2ee-worker", import.meta.url)
+);
 
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);
@@ -203,7 +206,7 @@ export const RoomPage = () => {
             // @ts-ignore
             e2ePassword: password,
 
-            e2ee: { keyProvider: e2eeKeyProvider },
+            e2ee: { keyProvider: e2eeKeyProvider, worker: e2eeWorker },
           }}
           onLeave={onLeave}
         />
