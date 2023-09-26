@@ -25,3 +25,19 @@ const mediaDevicesMock = {
 Object.defineProperty(global.navigator, "mediaDevices", {
   value: mediaDevicesMock,
 });
+
+class Worker {
+  url: string;
+  onmessage: (msg: string) => void;
+  constructor(stringUrl: string) {
+    this.url = stringUrl;
+    this.onmessage = (msg: string) => {};
+  }
+
+  postMessage(msg: string) {
+    this.onmessage(msg);
+  }
+}
+
+// @ts-expect-error
+window.Worker = Worker;
