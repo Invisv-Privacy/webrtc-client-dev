@@ -25,13 +25,15 @@ import InvisvIcon from "./InvisvIcon";
 import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 import { isSafari } from "./utils";
+import { importMetaUrl } from "./importMetaUrl";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider({
   sharedKey: true,
   ratchetWindowSize: 0,
 });
+
 const e2eeWorker = new Worker(
-  new URL("livekit-client/e2ee-worker", import.meta.url)
+  new URL("livekit-client/e2ee-worker", importMetaUrl())
 );
 
 export const RoomPage = () => {
