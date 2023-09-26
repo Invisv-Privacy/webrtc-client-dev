@@ -25,14 +25,13 @@ import InvisvIcon from "./InvisvIcon";
 import { CopyJoinLink } from "./joinLink";
 import { getServerFromQuery, getServerUrlFromQuery } from "./serverList";
 import { isSafari } from "./utils";
+import { getE2EEWorker } from "./getE2EEWorker";
 
 const e2eeKeyProvider = new ExternalE2EEKeyProvider({
   sharedKey: true,
   ratchetWindowSize: 0,
 });
-const e2eeWorker = new Worker(
-  new URL("livekit-client/e2ee-worker", import.meta.url)
-);
+const e2eeWorker = getE2EEWorker();
 
 export const RoomPage = () => {
   const [numParticipants, setNumParticipants] = useState(0);

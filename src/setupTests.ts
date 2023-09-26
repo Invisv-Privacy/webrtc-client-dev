@@ -41,3 +41,9 @@ class Worker {
 
 // @ts-expect-error
 window.Worker = Worker;
+
+// mocked because import.meta.url is not supported in jest
+// See https://github.com/facebook/create-react-app/issues/11651#issuecomment-1292461098
+jest.mock("./getE2EEWorker", () => ({
+  getE2EEWorker: () => {},
+}));
